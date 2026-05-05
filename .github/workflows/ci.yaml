@@ -39,4 +39,7 @@ jobs:
         uses: docker/build-push-action@v7
         with:
           context: .
-          tags: ${{ github.actor }}/nginx-ech
+          push: true
+          tags: |
+            ${{ env.REGISTRY }}/waferjay/nginx-ech:latest
+            ${{ env.REGISTRY }}/waferjay/nginx-ech:${{ github.sha }}
