@@ -65,7 +65,8 @@ RUN tmpDir=$(mktemp -d) \
       --with-cc-opt="" --with-ld-opt="" \
     && make install \
     && if [ -n "$tmpDir" ]; then rm -rf "$tmpDir"; fi \
-    && apk add --no-cache tzdata \
+    && apk del --no-network .build-deps \
+    && apk add --no-cache tzdata pcre2 \
     && ln -sf /dev/stdout /var/log/nginx/access.log \
     && ln -sf /dev/stderr /var/log/nginx/error.log \
     && mkdir /docker-entrypoint.d /var/cache/nginx \
