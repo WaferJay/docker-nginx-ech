@@ -68,7 +68,9 @@ RUN tmpDir=$(mktemp -d) \
     && apk add --no-cache tzdata \
     && ln -sf /dev/stdout /var/log/nginx/access.log \
     && ln -sf /dev/stderr /var/log/nginx/error.log \
-    && mkdir /docker-entrypoint.d
+    && mkdir /docker-entrypoint.d /var/cache/nginx \
+    && chown nginx:nginx /var/cache/nginx
+
 
 COPY docker-entrypoint.sh /
 COPY 10-listen-on-ipv6-by-default.sh /docker-entrypoint.d
@@ -76,7 +78,6 @@ COPY 15-local-resolvers.envsh /docker-entrypoint.d
 COPY 20-envsubst-on-templates.sh /docker-entrypoint.d
 COPY 30-tune-worker-processes.sh /docker-entrypoint.d
 ENTRYPOINT ["/docker-entrypoint.sh"]
-RUN mkdir /var/cache/nginx && chown nginx:nginx /var/cache/nginx
 
 EXPOSE 80
 
