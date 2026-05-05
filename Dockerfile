@@ -64,7 +64,7 @@ RUN tmpDir=$(mktemp -d) \
       --with-stream_ssl_preread_module \
       --with-cc-opt="" --with-ld-opt="" \
     && make install \
-    && if [ -n "$tempDir" ]; then rm -rf "$tempDir"; fi \
+    && if [ -n "$tmpDir" ]; then rm -rf "$tmpDir"; fi \
     && apk add --no-cache tzdata \
     && ln -sf /dev/stdout /var/log/nginx/access.log \
     && ln -sf /dev/stderr /var/log/nginx/error.log \
