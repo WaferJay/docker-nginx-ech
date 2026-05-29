@@ -44,3 +44,4 @@ jobs:
           tags: |
             ${{ env.REGISTRY }}/waferjay/nginx-ech:latest
             ${{ env.REGISTRY }}/waferjay/nginx-ech:${{ github.sha }}
+            ${{ env.REGISTRY }}/waferjay/nginx-ech:${{ github.head_ref }}
