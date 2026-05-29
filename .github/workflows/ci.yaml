@@ -2,7 +2,8 @@ name: Docker
 
 on:
   push:
-    branches: [ master ]
+    branches:
+      - nginx-*-openssl-*
 
 env:
   REGISTRY: ghcr.io
