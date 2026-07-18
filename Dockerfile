@@ -3,7 +3,7 @@ FROM alpine:3.23
 LABEL maintainer="WaferJay <https://github.com/WaferJay>"
 
 ENV OPENSSL_VERSION=4.0.1
-ENV NGINX_VERSION=1.31.2
+ENV NGINX_VERSION=1.31.3
 
 RUN tmpDir=$(mktemp -d) \
     && cd $tmpDir \
